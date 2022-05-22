@@ -34,7 +34,7 @@ import com.example.cnu_graduation_project.R;
  *  DrivingRecongnitionActivity --> FeedbackActivity --> ClientActivity --> LockActivity
  *
  */
-public class LockActivity extends ClientActivity {
+public class LockActivity extends StepCount {
     static String TAG ="LockActivity";
     public static int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE= 2323;
 
