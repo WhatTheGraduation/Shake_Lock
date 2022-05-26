@@ -12,13 +12,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 import com.example.cnu_graduation_project.ClientActivity;
 import com.example.cnu_graduation_project.R;
+import com.example.cnu_graduation_project.Service.ForegroundService;
 
 /**
  * 잠금화면 페이지
@@ -37,9 +42,9 @@ import com.example.cnu_graduation_project.R;
 public class LockActivity extends StepCount {
     static String TAG ="LockActivity";
     public static int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE= 2323;
-
+    private Button closeBtn;
     @RequiresApi(api = Build.VERSION_CODES.O_MR1)
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG,"Start "+ TAG);
         /**
@@ -58,7 +63,6 @@ public class LockActivity extends StepCount {
                     !Settings.canDrawOverlays(this)) {
                 RequestPermission();
             }
-            setContentView(R.layout.lock);
             /**
              * 잠금화면보다 높은 순위의 액티비티로 설정하고
              * 잠금화면을 지우는 태그
@@ -68,7 +72,29 @@ public class LockActivity extends StepCount {
             km.requestDismissKeyguard(this,null);
 
         }
+        closeBtn = findViewById(R.id.close);
 
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent serviceIntent = new Intent(LockActivity.this, ForegroundService.class);
+                serviceIntent.setAction("startForeground");
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    ContextCompat.startForegroundService(LockActivity.this, serviceIntent);
+                    finish();
+                } else {
+                    startService(serviceIntent);
+                }
+            }
+        });
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                stepView.setText(30-step);
+//            }
+//        });
 
     }
 
