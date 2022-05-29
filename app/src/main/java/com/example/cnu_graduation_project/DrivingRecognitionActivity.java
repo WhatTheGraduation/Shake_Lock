@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,22 +65,28 @@ public class DrivingRecognitionActivity extends AppCompatActivity{
             case DetectedActivity.IN_VEHICLE:
                 startService(intent);
                 TaskTag.ACTIVITY_TAG=true;
+//                Toast.makeText(this,"운전자 모드",Toast.LENGTH_SHORT).show();
                 return "IN_VEHICLE";
             case DetectedActivity.WALKING:
                 startService(intent);
                 TaskTag.ACTIVITY_TAG=true;
+//                Toast.makeText(this,"걷기",Toast.LENGTH_SHORT).show();
                 return "WALKING";
             case DetectedActivity.STILL:
                 TaskTag.ACTIVITY_TAG=false;
                 stopService(intent);
+//                Toast.makeText(this,"기능 중지",Toast.LENGTH_SHORT).show();
                 return "STILL";
             default:
+//                Toast.makeText(this,"기능 중지",Toast.LENGTH_SHORT).show();
                 stopService(intent);
                 TaskTag.ACTIVITY_TAG=false;
                 return "UNKNOWN";
         }
     }
-
+    private int add(int a, int b){
+        return a + b;
+    }
     private String toTransitionType(int transitionType) {
 
         switch (transitionType) {

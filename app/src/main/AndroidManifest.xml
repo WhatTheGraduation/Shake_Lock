@@ -32,6 +32,7 @@
         </activity>
 
         <activity android:name=".ClientActivity"/>
+        <activity android:name=".DrivingRecognitionActivity"/>
         <receiver android:name=".Lock.LockReceiver"/>
         <service android:name=".Lock.LockService"/>
     </application>

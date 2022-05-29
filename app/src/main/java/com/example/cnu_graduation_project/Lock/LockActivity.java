@@ -2,6 +2,7 @@ package com.example.cnu_graduation_project.Lock;
 
 import static com.example.cnu_graduation_project.TaskTag.ACTIVITY_TAG;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,6 +47,7 @@ public class LockActivity extends StepCount {
     private Button closeBtn;
     @RequiresApi(api = Build.VERSION_CODES.O_MR1)
     public void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         Log.d(TAG,"Start "+ TAG);
         /**
