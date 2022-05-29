@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
 
-            android:text="지금부터 운전 상태를 인식합니다.\n\n잠금을 풀면 지속적인 진동이 울립니다."
+            android:text="휴대폰을 흔들어 주세요."
             android:textAlignment="center"
             android:textSize="20dp"
             android:textColor="@color/black"
