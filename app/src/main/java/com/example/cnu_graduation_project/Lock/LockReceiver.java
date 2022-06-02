@@ -23,19 +23,19 @@ public class LockReceiver extends BroadcastReceiver {
 
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             Log.d(TAG, "Screen Off");
-            Intent i = new Intent(context, LockActivity.class);
-
-            /**
-             * 화면 종료 인식시 리시버 호출
-             */
             WINDOW_ON=false;
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i);
             Log.d(TAG,"Screen"+WINDOW_ON);
         }
         if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             Log.d(TAG, "Screen On");
 
+            Intent i = new Intent(context, LockActivity.class);
+
+            /**
+             * 화면 종료 인식시 리시버 호출
+             */
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
             /**
              * 화면 종료 인식시 리시버 호출
              */

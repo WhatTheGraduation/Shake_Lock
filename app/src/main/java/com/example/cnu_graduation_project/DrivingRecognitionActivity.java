@@ -84,9 +84,6 @@ public class DrivingRecognitionActivity extends AppCompatActivity{
                 return "UNKNOWN";
         }
     }
-    private int add(int a, int b){
-        return a + b;
-    }
     private String toTransitionType(int transitionType) {
 
         switch (transitionType) {
