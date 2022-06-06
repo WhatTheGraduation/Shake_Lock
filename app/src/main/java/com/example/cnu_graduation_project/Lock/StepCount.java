@@ -34,6 +34,7 @@ public class StepCount extends ClientActivity implements SensorEventListener {
         sm = (SensorManager)getSystemService(SENSOR_SERVICE);   // 센서 매니저 생성
         sensor_step_detector = sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);  // 스템 감지 센서 등록
         stepView=findViewById(R.id.warn_message);
+        step=0;
     }
 
     @Override

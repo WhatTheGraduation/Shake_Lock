@@ -70,7 +70,7 @@ public class DrivingRecognitionActivity extends AppCompatActivity{
             case DetectedActivity.WALKING:
                 startService(intent);
                 TaskTag.ACTIVITY_TAG=true;
-                Toast.makeText(this,"걷기",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"모드 실행",Toast.LENGTH_SHORT).show();
                 return "WALKING";
             case DetectedActivity.STILL:
                 TaskTag.ACTIVITY_TAG=false;

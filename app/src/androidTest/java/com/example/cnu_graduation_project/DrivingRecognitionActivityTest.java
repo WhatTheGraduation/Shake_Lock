@@ -4,10 +4,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -66,16 +69,17 @@ public class DrivingRecognitionActivityTest {
                 method = activity.getClass().getDeclaredMethod("toTransitionType", int.class);
                 method.setAccessible(true);
                 str[0] = (String) method.invoke(activity, ActivityTransition.ACTIVITY_TRANSITION_ENTER);
+                assertTrue(TaskTag.ACTIVITY_TAG);
+
                 str[1] = (String) method.invoke(activity, ActivityTransition.ACTIVITY_TRANSITION_EXIT);
+                assertFalse(TaskTag.ACTIVITY_TAG);
             } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         });
 
         assertEquals("ENTER", str[0]);
-        assertTrue(TaskTag.ACTIVITY_TAG);
         assertEquals("EXIT", str[1]);
-        assertFalse(TaskTag.ACTIVITY_TAG);
     }
 
     @Test
